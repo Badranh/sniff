@@ -33,9 +33,9 @@ Sniff is a simple image loader for Kotlin JVM and it supports the new jetpack co
 Dillinger is currently extended with the following plugins.
 Instructions on how to use them in your own application are linked below.
 
-| Plugin | README |
+| Plugin | VERSION |
 | ------ | ------ |
-| KTOR | [1.5.1][PlDb] |
+| KTOR | [1.5.1]  |
 ## Development
 
 Want to contribute? Great!

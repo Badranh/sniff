@@ -17,6 +17,7 @@ Sniff is a simple network image loader and cacher for Kotlin JVM, it supports th
 - Option to add place holder when loading
 - Request pool to avoid duplicate downloads
 - improve the jetpack compose ui component
+- Remove the dependency on jetpack compose ui, so this library can be used on all platforms
 
 ## Project Structure
 

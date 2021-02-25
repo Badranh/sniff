@@ -15,6 +15,8 @@ Sniff is a simple network image loader and cacher for Kotlin JVM, it supports th
 - Project modularization.
 - Option to apply image color filters in an easy way
 - Option to add place holder when loading
+- Request pool to avoid duplicate downloads
+- improve the jetpack compose ui component
 
 ## Project Structure
 
@@ -34,8 +36,8 @@ Dillinger is currently extended with the following plugins.
 Instructions on how to use them in your own application are linked below.
 
 | Plugin | VERSION |
-| ------ | ------ |
-| KTOR | [1.5.1]  |
+| ------ | ------  |
+| KTOR   | 1.5.1   |
 ## Development
 
 Want to contribute? Great!

@@ -33,9 +33,7 @@ Sniff is a simple network image loader and cacher for Kotlin JVM, it supports th
 
 ## The project depends on
 
-Dillinger is currently extended with the following plugins.
-Instructions on how to use them in your own application are linked below.
-
+Sniff is currently extended with the following plugins.
 | Plugin | VERSION |
 | ------ | ------  |
 | KTOR   | 1.5.1   |

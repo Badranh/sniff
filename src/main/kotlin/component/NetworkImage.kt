@@ -20,6 +20,7 @@ import service.services.KtorService
 import sniff.LOADER
 import sniff.Sniff
 
+//fix component for variable url
 
 @Composable
 fun NetworkImage(
@@ -33,17 +34,17 @@ fun NetworkImage(
 ){
     val loader by remember{ mutableStateOf(Sniff.build(LOADER.BASIC))}
     var imageBitmap by remember{ mutableStateOf<ImageBitmap?>(null) }
-    onCommit(url){
         scope.launch {
+            println("in scope")
             imageBitmap = loader.loadNetworkImage(url)!!
         }
         onDispose {
             scope.cancel("Canceled")
         }
-    }
+
     if(imageBitmap!=null) {
         Image(
-            painter = remember(imageBitmap) { ImagePainter(imageBitmap!!) },
+            painter = ImagePainter(imageBitmap!!) ,
             modifier = modifier,
             alignment = alignment,
             contentScale = contentScale,

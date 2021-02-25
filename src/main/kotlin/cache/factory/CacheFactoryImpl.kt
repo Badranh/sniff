@@ -1,7 +1,6 @@
 package cache.factory
 
 import cache.Cache
-import cache.base.BaseCache
 import cache.lru.LRUCache
 
 
@@ -11,14 +10,13 @@ class CacheBuilder {
         override fun createCache(strategy: CachingStrategy):Cache {
             return when(strategy){
                 CachingStrategy.LRU ->{
-                    LRUCache(createBaseCache())
+                    LRUCache(400000000)
                 }
                 CachingStrategy.TIMED ->{
-                    LRUCache(createBaseCache())
+                    LRUCache(400000000)
                 }
             }
         }
-        private fun createBaseCache()= BaseCache()
     }
 
 }

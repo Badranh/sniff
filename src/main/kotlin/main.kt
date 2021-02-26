@@ -31,13 +31,17 @@ import sniff.Sniff
 //TODO:let user Apply image color filters
 
 fun main() = Window {
-    var text by remember { mutableStateOf("Reloasdfd") }
+    var text by remember { mutableStateOf("asd") }
+
+    var url by  remember { mutableStateOf(0) }
+    val imagesArray = arrayListOf("https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png","https://i0.wp.com/www.oakridge.in/wp-content/uploads/2020/02/Sample-jpg-image-500kb.jpg","https://miro.medium.com/max/1838/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg")
     val coroutineScope = rememberCoroutineScope()
     MaterialTheme {
-
-        NetworkImage(url = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",scope = coroutineScope)
+        NetworkImage(url = imagesArray[url],scope = coroutineScope)
         Button(onClick = {
-            text = "Reload"
+            text = "reload"
+            url = (url +1)%3
+            print(url)
         }) {
             Text(text)
         }

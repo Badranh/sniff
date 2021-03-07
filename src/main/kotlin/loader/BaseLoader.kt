@@ -2,15 +2,13 @@ package loader
 
 import androidx.compose.ui.graphics.ImageBitmap
 import cache.Cache
-import cache.factory.CacheBuilder
-import cache.factory.CachingStrategy
-import cache.factory.withStrategy
+import kotlinx.coroutines.flow.Flow
 import service.SniffService
-import service.services.KtorService
+import data.Result
 
 abstract class BaseLoader {
     abstract var cache : Cache
     abstract var service : SniffService
 
-    abstract suspend fun loadNetworkImage(url:String): ImageBitmap?
+    abstract suspend fun loadNetworkImage(url:String): Flow<Result<ImageBitmap?>>
 }

@@ -2,18 +2,19 @@ package loader
 
 import androidx.compose.ui.graphics.ImageBitmap
 import cache.Cache
+import data.Result
+import kotlinx.coroutines.flow.flow
 import service.SniffService
 
 class OfflineLoader(override var cache: Cache, override var service: SniffService) : BaseLoader() {
-    override suspend fun loadNetworkImage(url: String): ImageBitmap? {
-        return try {
-            println("Requesting From CACHE")
+    override suspend fun loadNetworkImage(url: String) = flow {
+        println("ACCESSED CACHE")
+        try {
             val image = cache[url] as ImageBitmap
-            println("SUCCESS From CACHE")
-            image
+            emit(Result.Success(image))
         } catch (e: Exception) {
-            println("ERROR From CACHE")
-            null
+            emit(Result.Failure("Not in cache"))
         }
     }
+
 }

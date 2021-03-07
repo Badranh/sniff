@@ -19,14 +19,11 @@ class KtorService(override var isRetriesEnabled: Boolean) :SniffService {
     }
 
     override suspend fun downloadImage(url: String):Either<String,ByteArray> {
-        print("asdasdasdadasdad")
        return client.requestOrFail({
            val resp = client.get<ByteArray>(url)
-           print("hehe $resp")
            Either.Right(resp)
 
         },{
-           println("failll wlr")
            Either.Left(this.message.toString())
         })
     }

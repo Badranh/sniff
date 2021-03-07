@@ -8,6 +8,7 @@ Sniff is a simple network image loader and cacher for Kotlin JVM, it supports th
 ## TO DO
 - Singleton instance of Sniff from factory.
 - Create Disk caching.
+- Create Image Disk Loader
 - Create factories for each service.
 - Add fade option upon rendering.
 - Enhance fallbacks and retries of network calls, apply them in the correct way.

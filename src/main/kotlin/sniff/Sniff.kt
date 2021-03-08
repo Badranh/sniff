@@ -8,6 +8,8 @@ import loader.BaseLoader
 import loader.BasicLoader
 import loader.OfflineLoader
 import loader.OnlineLoader
+import resolver.ImageResolver
+import resolver.Resolver
 import service.SniffService
 import service.services.KtorService
 
@@ -18,25 +20,28 @@ enum class LOADER {
 // use singleton value instance for type
 class Sniff {
     companion object : ISniffFactory{
-        override fun build(loaderType:LOADER,enableRetries: Boolean?, strategy: CachingStrategy?, service: SniffService?): BaseLoader {
-            val cache = if(strategy!=null){
-                 CacheBuilder withStrategy strategy
-            }else{
-                 CacheBuilder withStrategy  CachingStrategy.LRU
+        private lateinit var instance: Resolver
+        override fun build(loaderType:LOADER,enableRetries: Boolean?, strategy: CachingStrategy?, service: SniffService?): Resolver {
+            if(!::instance.isInitialized){
+                val cache = if(strategy!=null){
+                    CacheBuilder withStrategy strategy
+                }else{
+                    CacheBuilder withStrategy  CachingStrategy.LRU
+                }
+                val httpService = service ?: KtorService(true)
+                instance = when(loaderType){
+                    LOADER.BASIC ->{
+                        ImageResolver(BasicLoader(cache,httpService))
+                    }
+                    LOADER.OFFLINE->{
+                        ImageResolver(OfflineLoader(cache,httpService))
+                    }
+                    LOADER.ONLINE->{
+                        ImageResolver(OnlineLoader(cache,httpService))
+                    }
+                }
             }
-            val httpService = service ?: KtorService(true)
-
-            return when(loaderType){
-                LOADER.BASIC ->{
-                    BasicLoader(cache,httpService)
-                }
-                LOADER.OFFLINE->{
-                    OfflineLoader(cache,httpService)
-                }
-                LOADER.ONLINE->{
-                    OnlineLoader(cache,httpService)
-                }
-            }
+            return instance
         }
     }
 }

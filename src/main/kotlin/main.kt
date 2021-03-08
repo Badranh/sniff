@@ -1,5 +1,6 @@
 import androidx.compose.desktop.Window
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
 import androidx.compose.material.Button
@@ -34,16 +35,22 @@ fun main() = Window {
     var text by remember { mutableStateOf("asd") }
 
     var url by  remember { mutableStateOf(0) }
+    var url2 by  remember { mutableStateOf(1) }
+
     val imagesArray = arrayListOf("https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png","https://i0.wp.com/www.oakridge.in/wp-content/uploads/2020/02/Sample-jpg-image-500kb.jpg","https://miro.medium.com/max/1838/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg")
     val coroutineScope = rememberCoroutineScope()
     MaterialTheme {
-        NetworkImage(url = imagesArray[url],scope = coroutineScope)
-        Button(onClick = {
-            text = "reload"
-            url = (url +1)%3
-            print(url)
-        }) {
-            Text(text)
+        Row{
+            Button(onClick = {
+                text = "reload"
+                url = (url +1)%3
+                url2 = (url2 +1)%3
+            }) {
+                Text(text)
+            }
+            NetworkImage(url = imagesArray[url],scope = coroutineScope)
+            NetworkImage(url = imagesArray[url2],scope = coroutineScope)
+
         }
     }
 }

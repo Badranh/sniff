@@ -9,14 +9,15 @@ import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.ImagePainter
 import androidx.compose.ui.layout.ContentScale
-import cache.factory.CacheBuilder
-import cache.factory.CachingStrategy
-import cache.factory.withStrategy
+import extensions.doOnFailure
+import extensions.doOnLoading
+import extensions.doOnSuccess
+import extensions.shareInScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import loader.BasicLoader
-import service.services.KtorService
 import sniff.LOADER
 import sniff.Sniff
 
@@ -34,13 +35,30 @@ fun NetworkImage(
 ){
     val loader by remember{ mutableStateOf(Sniff.build(LOADER.BASIC))}
     var imageBitmap by remember{ mutableStateOf<ImageBitmap?>(null) }
+
+
+    onCommit(url){
         scope.launch {
-            println("in scope")
-            imageBitmap = loader.loadNetworkImage(url)!!
+            loader.load(url).collectLatest { result ->
+                result.doOnSuccess {
+                    println("Success")
+                    imageBitmap = it
+                }.doOnFailure {
+                    println(it!!)
+                }.doOnLoading {
+                    println("Loading")
+                }
+            }
         }
-        onDispose {
-            scope.cancel("Canceled")
-        }
+    }
+
+
+
+onDispose {
+    scope.cancel()
+}
+
+
 
     if(imageBitmap!=null) {
         Image(

@@ -1,4 +1,4 @@
-# Sniff (Under Development)
+# Sniff (Under Active Development)
 ## _A Fast Kotlin JVM Image Loader/Cacher_
 
 ![N|Kotlin](https://camo.githubusercontent.com/96c091300467cf1fd3aa74f9d83beb359626ed3b169a3a13ed62d1d91ada16c9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6b6f746c696e2d312e342e32302d626c75652e7376673f6c6f676f3d6b6f746c696e)

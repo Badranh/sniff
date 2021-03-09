@@ -16,6 +16,7 @@ import component.NetworkImage
 import kotlinx.coroutines.launch
 import loader.BaseLoader
 import loader.BasicLoader
+import platformdirs.PlatformDirsFactory
 import service.services.KtorService
 import sniff.Sniff
 
@@ -37,6 +38,7 @@ fun main() = Window {
     var url by  remember { mutableStateOf(0) }
     var url2 by  remember { mutableStateOf(1) }
 
+    println(PlatformDirsFactory.Factory.build().getCacheDir())
     val imagesArray = arrayListOf("https://www.talkwalker.com/images/2020/blog-headers/image-analysis.png","https://i0.wp.com/www.oakridge.in/wp-content/uploads/2020/02/Sample-jpg-image-500kb.jpg","https://miro.medium.com/max/1838/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg")
     val coroutineScope = rememberCoroutineScope()
     MaterialTheme {

@@ -8,6 +8,8 @@ import loader.BaseLoader
 import loader.BasicLoader
 import loader.OfflineLoader
 import loader.OnlineLoader
+import platformdirs.PlatformDirs
+import platformdirs.PlatformDirsFactory
 import resolver.ImageResolver
 import resolver.Resolver
 import service.SniffService

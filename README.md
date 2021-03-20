@@ -19,6 +19,7 @@ Sniff is a simple network image loader and cacher for Kotlin JVM, it supports th
 - Change caching strategies on runtime
 - Change Loader types on runtime
 - Change HttpClient on runtime
+- Add GIF support
 
 ## DOING
 

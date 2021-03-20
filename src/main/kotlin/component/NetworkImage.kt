@@ -52,13 +52,9 @@ fun NetworkImage(
         }
     }
 
-
-
 onDispose {
     scope.cancel()
 }
-
-
 
     if(imageBitmap!=null) {
         Image(

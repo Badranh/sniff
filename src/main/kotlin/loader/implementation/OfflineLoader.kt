@@ -1,9 +1,10 @@
-package loader
+package loader.implementation
 
 import androidx.compose.ui.graphics.ImageBitmap
 import cache.Cache
 import data.Result
 import kotlinx.coroutines.flow.flow
+import loader.BaseLoader
 import service.SniffService
 
 class OfflineLoader(override var cache: Cache, override var service: SniffService) : BaseLoader() {

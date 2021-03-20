@@ -1,22 +1,18 @@
 package sniff
 
-import cache.Cache
 import cache.factory.CacheBuilder
 import cache.factory.CachingStrategy
 import cache.factory.withStrategy
-import loader.BaseLoader
-import loader.BasicLoader
-import loader.OfflineLoader
-import loader.OnlineLoader
-import platformdirs.PlatformDirs
-import platformdirs.PlatformDirsFactory
+import loader.implementation.BasicLoader
+import loader.implementation.OfflineLoader
+import loader.implementation.OnlineLoader
 import resolver.ImageResolver
 import resolver.Resolver
 import service.SniffService
 import service.services.KtorService
 
 
-enum class LOADER {
+public enum class LOADER {
     BASIC,OFFLINE,ONLINE
 }
 // use singleton value instance for type

@@ -1,25 +1,11 @@
 import androidx.compose.desktop.Window
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.layout.ContentScale
-import cache.factory.CacheBuilder
-import cache.factory.CachingStrategy
-import cache.factory.withStrategy
 import component.NetworkImage
-import kotlinx.coroutines.launch
-import loader.BaseLoader
-import loader.BasicLoader
 import platformdirs.PlatformDirsFactory
-import service.services.KtorService
-import sniff.Sniff
-
 
 
 //TODO:Singleton instance of Sniff from factory
@@ -46,12 +32,11 @@ fun main() = Window {
             Button(onClick = {
                 text = "reload"
                 url = (url +1)%3
-                url2 = (url2 +1)%3
             }) {
                 Text(text)
             }
             NetworkImage(url = imagesArray[url],scope = coroutineScope)
-            NetworkImage(url = imagesArray[url2],scope = coroutineScope)
+            NetworkImage(url = imagesArray[url],scope = coroutineScope)
 
         }
     }

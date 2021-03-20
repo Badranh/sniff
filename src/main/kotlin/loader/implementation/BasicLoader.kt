@@ -1,21 +1,14 @@
-package loader
+package loader.implementation
 
-import androidx.compose.ui.graphics.ImageBitmap
 import cache.Cache
-import cache.factory.CacheBuilder
-import cache.factory.CachingStrategy
-import cache.factory.withStrategy
-import io.ktor.utils.io.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import service.SniffService
-import service.entities.Either
-import service.retryhandlers.backoffwithratio.retryIO
-import service.services.KtorService
-import service.services.bitmap
 
 
 import data.Result
+import loader.BaseLoader
+
 //check cache
 //if not in cache
 // request network , if success save cache

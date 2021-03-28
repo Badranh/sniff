@@ -6,7 +6,6 @@
 Sniff is a simple network image loader and cacher for Kotlin JVM, it supports the new jetpack compose ui for desktop 🔥.It is inspired from Picasso for android and built on the top of Ktor Client as a default client.
 
 ## TO DO
-- Create Disk caching.
 - Create Image Disk Loader
 - Create factories for each service.
 - Add fade option upon rendering.
@@ -22,6 +21,8 @@ Sniff is a simple network image loader and cacher for Kotlin JVM, it supports th
 - Add GIF support
 
 ## DOING
+
+- Create Disk caching.
 
 ## Project Structure
 

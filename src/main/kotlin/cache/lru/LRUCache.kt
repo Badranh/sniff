@@ -3,7 +3,7 @@ package cache.lru
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asDesktopBitmap
 import cache.Cache
-
+import service.services.bitmap
 
 
 //this is from picasso/square, edited to fit our needs
@@ -19,13 +19,13 @@ internal class LRUCache(override val maxByteCount: Int):Cache {
             ): Int = value.byteCount.toInt()
         }
 
-    override operator fun get(key: String): ImageBitmap? = cache[key]?.bitmap
+    override operator fun get(key: String): ImageBitmap? = cache[key]?.bitmap?.bitmap()
 
     override operator fun set(
         key: String,
-        bitmap: ImageBitmap
+        bitmap: ByteArray
     ) {
-        val byteCount = bitmap.asDesktopBitmap().computeByteSize()
+        val byteCount = bitmap.size.toLong()
         // If the bitmap is too big for the cache, don't even attempt to store it. Doing so will cause
         // the cache to be cleared. Instead just evict an existing element with the same key if it
         // exists.
@@ -68,7 +68,7 @@ internal class LRUCache(override val maxByteCount: Int):Cache {
     override fun evictionCount(): Int = cache.evictionCount()
 
     internal class BitmapAndSize(
-        val bitmap: ImageBitmap,
+        val bitmap: ByteArray,
         val byteCount: Long
     )
 }

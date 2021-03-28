@@ -14,6 +14,7 @@ class OfflineLoader(override var cache: Cache, override var service: SniffServic
             val image = cache[url] as ImageBitmap
             emit(Result.Success(image))
         } catch (e: Exception) {
+            e.printStackTrace()
             emit(Result.Failure("Not in cache"))
         }
     }

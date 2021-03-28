@@ -19,7 +19,7 @@ import java.util.LinkedHashMap
 
 
 //Source is from android but translated to kotlin with some modification regarding trimming
-
+//TODO: use mutex ?? -:) ?? should I? 
 
 
 open class LRUCacheBaseDelegate<K, V>(maxSize: Int) {

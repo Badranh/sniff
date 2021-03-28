@@ -13,7 +13,7 @@ class OnlineLoader(override var cache: Cache, override var service: SniffService
         when(val resp = service.downloadImage(url)){
             is Either.Right ->{
                 val respone = resp.r.bitmap()
-                cache[url] = respone
+                cache[url] = resp.r
                 println("NETWORK")
                 emit(Result.Success(respone))
 

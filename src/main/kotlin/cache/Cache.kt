@@ -18,7 +18,7 @@ interface Cache {
     /** Returns the number of times [get] returned a value.  */
     fun hitCount(): Int
     /** set item in cache.  */
-    operator fun set(key: String, bitmap: ImageBitmap)
+    operator fun set(key: String, bitmap: ByteArray)
     /** Returns cache size.  */
     fun size(): Int
     /** Removes item from cache if found. */
